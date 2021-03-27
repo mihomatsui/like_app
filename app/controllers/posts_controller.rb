@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: %i[edit update destroy]
+
   def index
     @posts = Post.order(:id).includes(:user)
   end
@@ -29,5 +31,12 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:content)
+  end
+
+  def set_post
+    # 「自分の投稿」の中からURLの :idに対する投稿を探す
+    # 「他人の投稿」の場合はエラーを出す
+    @post = current_user.posts.find(params[:id])
+    redirect_to root_path, alert: "権限がありません"
   end
 end
