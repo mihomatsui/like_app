@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order(:id).includes(:user)
+    @liked_post_ids = current_user.likes.pluck(:post_id)
   end
 
   def new
