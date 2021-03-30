@@ -1,8 +1,8 @@
 <div>
   <p>【メールアドレス】<%= post.user.email %></p>
   <p>【内容】<%= post.content %></p>
-
-  <p>
+   <!-- ***** いいねの pタグ に id 属性を追加 ***** -->
+  <p id="post-<%= post.id %>">
     <% if @liked_post_ids.include?(post.id) %>
       <%= render "like", post: post %>
     <% else %>

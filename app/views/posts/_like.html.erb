@@ -1,2 +1,2 @@
 <%# 「いいね！」済み(クリックすると「いいね」解除) %>
-<%= link_to "★", post_likes_path(post), method: :delete %>
+<%= link_to "★", post_likes_path(post), method: :delete, remote: true %>
