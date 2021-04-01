@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    registrations: "users/registrations"
-  }
   root "posts#index"
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    passwords: "users/passwords"
+  }
+  
   resources :posts do
     resource :likes, only: [:create, :destroy]
   end
