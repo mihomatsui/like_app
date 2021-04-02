@@ -2,14 +2,14 @@
   <p>【メールアドレス】<%= post.user.email %></p>
   <p>【内容】<%= post.content %></p>
    <!-- ***** いいねの pタグ に id 属性を追加 ***** -->
-  <p id="post-<%= post.id %>">
+  <p id="post-<%= post.id">
     <% if @liked_post_ids.include?(post.id) %>
       <%= render "like", post: post %>
     <% else %>
       <%= render "dislike", post: post %>
     <% end %>
   </p>
-  <p>
+  <p> %>
     <%= link_to "詳細", post %>
     <!-- ***** 条件分岐に変更 ***** -->
     <% if current_user.id == post.user.id %>
